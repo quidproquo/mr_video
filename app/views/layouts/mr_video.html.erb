@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= MrVideo::NAME %><%= ' | ' + yield(:title) if content_for?(:title) %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'mr_video/application', media: 'all' %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" style="color: white;" href="<%= root_path %>">Mr. Video</a>
+        </div><!-- /.navbar-header -->
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to('Cassettes', root_path) %>
+            </li>
+          </ul>
+        </div>
+      </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <!--div class="navbar navbar-fixed-bottom navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <ul class="nav navbar-nav">
+            <li>
+              <p class="navbar-text" style="color: white;">Mr. Video v<%= MrVideo::VERSION %></p>
+            </li>
+            <li>
+              <%= link_to('Github', MrVideo::URL, target: '_blank') %>
+            </li>
+            <li>
+              <p class="navbar-text">Cassette Library Dir: <%= MrVideo.configuration.cassette_library_dir %></p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div-->
+    <%= javascript_include_tag 'mr_video/application' %>
+  </body>
+</html>

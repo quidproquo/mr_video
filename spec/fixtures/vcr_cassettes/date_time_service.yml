@@ -1,0 +1,38 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.geonames.org/timezoneJSON?lat=-34.92771808058&lng=138.477041423321&username=quidproquo
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 12 Jun 2014 00:56:04 GMT
+      Server:
+      - Apache/2.2.17 (Linux/SUSE)
+      Cache-Control:
+      - no-cache
+      Access-Control-Allow-Origin:
+      - ! '*'
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json;charset=UTF-8
+    body:
+      encoding: US-ASCII
+      string: ! '{"time":"2014-06-12 10:26","countryName":"Australia","sunset":"2014-06-13
+        17:10","rawOffset":9.5,"dstOffset":9.5,"countryCode":"AU","gmtOffset":10.5,"lng":138.477041423321,"sunrise":"2014-06-13
+        07:20","timezoneId":"Australia/Adelaide","lat":-34.92771808058}'
+    http_version: 
+  recorded_at: Thu, 12 Jun 2014 00:56:04 GMT
+recorded_with: VCR 2.9.2

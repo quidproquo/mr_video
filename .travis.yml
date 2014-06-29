@@ -1,0 +1,10 @@
+---
+# Broken bundler on travis CI - https://github.com/bundler/bundler/issues/2784
+before_install:
+  - gem update --system 2.1.11
+  - gem --version
+language: ruby
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.0

@@ -1,0 +1,34 @@
+<% content_for(:title) { 'Cassettes' } %>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Cassettes (<%= @cassettes.count %>)</h1>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Episodes</th>
+          <th>Last Updated</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cassettes.each_with_index do |cassette, index| %>
+          <tr id="cassette_<%= cassette.id %>_row">
+            <td><%= index + 1 %></td>
+            <td><%= link_to(cassette.name, cassette_path(cassette)) %></td>
+            <td><%= cassette.episodes.count %></td>
+            <td><%= time_ago_in_words(cassette.updated_at) %> ago</td>
+            <td>
+              <%= link_to(cassette_path(cassette), method: :delete, confirm: "Are you sure you want to delete the \"#{cassette.name}\" cassette?", 'data-severity' => 'danger', remote: true) do %>
+                <button class="btn btn-danger btn-xs">
+                  <i class="glyphicon glyphicon-trash"></i> &nbsp;Delete
+                </button>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
