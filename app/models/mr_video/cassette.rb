@@ -11,7 +11,7 @@ module MrVideo
     end
 
     def name
-      @name ||= cassette_path.match(/\/([a-zA-Z0-9_-]+)\.yml/)[1]
+      @name ||= cassette_path.sub(self.class.cassette_dir, '').match(/^\/(.+)\.yml$/)[1]
     end
 
     def episodes
@@ -121,7 +121,7 @@ module MrVideo
 
     # Class properties:
 
-    def self.cassette_paths(name = '*')
+    def self.cassette_paths(name = '**/*')
       Dir.glob(cassette_dir + "/#{name}.yml")
     end
 
