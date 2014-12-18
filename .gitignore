@@ -1,7 +1,9 @@
 *.gem
 .rspec
+.ruby-version
 .rvmrc
 .bundle/
+bin/
 coverage/*
 log/*.log
 pkg/

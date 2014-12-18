@@ -16,10 +16,6 @@ gemspec
 gem 'rails', '~> 3.2'
 gem 'sqlite3', :platforms => :ruby
 
-group :development, :test do
-  gem 'pry-debugger'
-end
-
 group :test do
   gem 'coveralls'
   gem 'rspec-collection_matchers'

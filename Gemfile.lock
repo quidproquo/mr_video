@@ -35,20 +35,12 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.3)
     builder (3.0.4)
-    coderay (1.1.0)
-    columnize (0.8.9)
     coveralls (0.7.0)
       multi_json (~> 1.3)
       rest-client
       simplecov (>= 0.7)
       term-ansicolor
       thor
-    debugger (1.6.8)
-      columnize (>= 0.3.1)
-      debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.3.5)
-    debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.3.5)
     diff-lcs (1.2.5)
     docile (1.1.5)
     erubis (2.7.0)
@@ -59,17 +51,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    method_source (0.8.2)
     mime-types (1.25.1)
     multi_json (1.10.1)
     polyglot (0.3.5)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
-      slop (~> 3.4)
-    pry-debugger (0.2.2)
-      debugger (~> 1.3)
-      pry (~> 0.9.10)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -125,7 +109,6 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
-    slop (3.5.0)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -148,7 +131,6 @@ PLATFORMS
 DEPENDENCIES
   coveralls
   mr_video!
-  pry-debugger
   rails (~> 3.2)
   rspec-collection_matchers
   rspec-expectations
