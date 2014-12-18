@@ -7,7 +7,7 @@ module MrVideo
     end
 
     def id
-      name
+      URI.escape(name, /\//)
     end
 
     def name

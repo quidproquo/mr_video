@@ -6,6 +6,17 @@ describe MrVideo::Cassette do
 
   subject { model }
 
+  describe '#id' do
+    let(:id) { model.id }
+    subject { id }
+    it { should == 'bell_house' }
+
+    context 'when cassette is in subdirectory' do
+      let(:model) { model_class.find('test_subdirectory/dummy_cassette_2') }
+      it { should == 'test_subdirectory%2Fdummy_cassette_2' }
+    end
+  end
+
   describe '#name' do
     let(:name) { model.name }
     subject { name }
@@ -58,7 +69,7 @@ describe MrVideo::Cassette do
   describe '.all' do
     let(:all) { model_class.all }
     subject { all }
-    its(:size) { should == 5 }
+    its(:size) { should == 6 }
   end # .all
 
 end # MrVideo::Cassette
