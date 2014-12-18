@@ -1,6 +1,6 @@
 module MrVideo
 
-  class MrVideoController < ApplicationController
+  class MrVideoController < ActionController::Base
     layout 'mr_video'
 
 
