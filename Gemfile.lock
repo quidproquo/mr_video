@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mr_video (1.0.2)
+    mr_video (1.0.4)
 
 GEM
   remote: http://rubygems.org/
