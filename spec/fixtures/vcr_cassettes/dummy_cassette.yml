@@ -19,7 +19,7 @@ http_interactions:
       X-Pingback:
       - http://www.thebellhouseny.com/xmlrpc.php
       Link:
-      - <http://www.thebellhouseny.com/?p=6>; rel=shortlink
+      - "<http://www.thebellhouseny.com/?p=6>; rel=shortlink"
       Content-Type:
       - text/html; charset=UTF-8
       X-Geo-Ip:
@@ -1879,7 +1879,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - ! '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
@@ -6992,7 +6992,7 @@ http_interactions:
       string: ''
     headers:
       Accept:
-      - ! '*/*'
+      - "*/*"
       User-Agent:
       - Ruby
   response:
