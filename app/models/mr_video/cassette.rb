@@ -8,6 +8,7 @@ module MrVideo
 
     def id
       URI.escape(name, /\//)
+      # name
     end
 
     def name

@@ -13,7 +13,6 @@ gemspec
 # To use debugger
 # gem 'debugger'
 
-gem 'rails', '~> 3.2'
 gem 'sqlite3', :platforms => :ruby
 
 group :test do
