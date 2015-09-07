@@ -3,7 +3,7 @@ Mr. Video [![Build Status](https://travis-ci.org/quidproquo/mr_video.png?branch=
 
 Rails-based front-end for the popular [VCR gem](https://github.com/vcr/vcr). It allows you to
 browse cassettes and episodes. HTTP body content from episodes can be viewed in the browser,
-enabling easy debugging of JSON and HTML. Furthermore, cassettes and eposides can be deleted, 
+enabling easy debugging of JSON and HTML. Furthermore, cassettes and episodes can be deleted, 
 allowing for easy maintenance of recorded content. While Mr. Video is mainly meant to be used 
 in your development environment, it can be configured for production and is not directly 
 dependent on the VCR gem.
