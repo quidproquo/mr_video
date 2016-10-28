@@ -47,7 +47,7 @@ GEM
     hike (1.2.3)
     i18n (0.6.9)
     journey (1.0.4)
-    json (1.8.1)
+    json (1.8.3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -139,3 +139,6 @@ DEPENDENCIES
   rspec-rails
   shoulda-matchers
   sqlite3
+
+BUNDLED WITH
+   1.13.6

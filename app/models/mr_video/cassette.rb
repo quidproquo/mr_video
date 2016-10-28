@@ -7,7 +7,11 @@ module MrVideo
     end
 
     def id
-      URI.escape(name, /\//)
+      if Rails.version < '4.2.0'
+        URI.escape(name, /\//)
+      else
+        name
+      end
     end
 
     def name
