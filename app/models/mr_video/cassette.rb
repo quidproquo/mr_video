@@ -74,6 +74,7 @@ module MrVideo
     end
 
     def self.find(name)
+      name = URI.decode(name)
       cassette_path = cassette_paths(name).first
       unless cassette_path
         raise StandardError.new("#{self.name} with name: '#{name}' not found!")
