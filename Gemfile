@@ -17,6 +17,7 @@ gem 'rails', '~> 3.2'
 gem 'sqlite3', :platforms => :ruby
 
 group :test do
+  gem 'test-unit'
   gem 'coveralls'
   gem 'rspec-collection_matchers'
   gem 'rspec-expectations'
