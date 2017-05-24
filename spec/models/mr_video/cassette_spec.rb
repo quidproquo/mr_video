@@ -72,4 +72,11 @@ describe MrVideo::Cassette do
     its(:size) { should == 6 }
   end # .all
 
+  describe '.find' do
+    context 'when name is from a subdirectory' do
+      let(:model) { model_class.find('test_subdirectory%2Fdummy_cassette_2') }
+      it { -> { model }.should_not raise_error }
+    end
+  end
+
 end # MrVideo::Cassette
