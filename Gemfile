@@ -18,6 +18,7 @@ gem 'sqlite3', :platforms => :ruby
 
 group :test do
   gem 'test-unit'
+  gem 'minitest'
   gem 'coveralls'
   gem 'rspec-collection_matchers'
   gem 'rspec-expectations'

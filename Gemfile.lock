@@ -52,6 +52,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    minitest (5.9.1)
     multi_json (1.10.1)
     polyglot (0.3.5)
     power_assert (0.2.6)
@@ -133,6 +134,7 @@ PLATFORMS
 
 DEPENDENCIES
   coveralls
+  minitest
   mr_video!
   rails (~> 3.2)
   rspec-collection_matchers
