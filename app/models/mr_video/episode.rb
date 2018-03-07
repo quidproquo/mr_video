@@ -30,7 +30,7 @@ module MrVideo
     end
 
     def content_type
-      response['headers']['Content-Type'][0]
+      headers['content-type'][0]
     end
 
     def recorded_at
@@ -57,6 +57,10 @@ module MrVideo
 
     def response
       http_interaction['response']
+    end
+
+    def headers
+      @headers ||= response['headers'].transform_keys(&:downcase)
     end
 
     def uri
