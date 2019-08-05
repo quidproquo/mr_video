@@ -14,13 +14,13 @@ describe MrVideo::CassettesController do
       index
     end
 
-    it { should be_success }
+    it { should be_successful }
   end
 
   describe '#show' do
     let(:id) { 'bell_house' }
     let(:params) { { id: id } }
-    let(:show) { get(:show, params) }
+    let(:show) { get(:show, params: params) }
 
     subject { show }
 
@@ -28,14 +28,14 @@ describe MrVideo::CassettesController do
       show
     end
 
-    it { should be_success }
+    it { should be_successful }
   end
 
   describe '#destroy' do
     let(:id) { 'bell_house' }
     let(:cassette) { double(:cassette, id: id) }
     let(:params) { { id: id } }
-    let(:destroy) { xhr(:delete, :destroy, params) }
+    let(:destroy) { delete(:destroy, xhr: true, params: params) }
 
     subject { destroy }
 
@@ -45,7 +45,7 @@ describe MrVideo::CassettesController do
       destroy
     end
 
-    it { should be_success }
+    it { should be_successful }
 
     it 'should destroy the cassette' do
       expect(cassette).to have_received(:destroy)

@@ -11,7 +11,7 @@ dependent on the VCR gem.
 Compatibility
 -------------
 
-Mr. Video is tested against MRI (1.9.3+).
+Mr. Video is tested against MRI 2.3.0. For Ruby <= 2.3.0, use version 1.0.5.
 
 Installation
 ------------

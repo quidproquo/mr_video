@@ -19,7 +19,7 @@ describe MrVideo::EpisodesController do
       id: id,
       fix_relative_links: fix_relative_links
     } }
-    let(:show) { get(:show, params) }
+    let(:show) { get(:show, params: params) }
 
     subject { show }
 
@@ -32,7 +32,7 @@ describe MrVideo::EpisodesController do
       show
     end
     
-    it { should be_success }
+    it { should be_successful }
 
     context 'fix relative links is true' do
       let(:fix_relative_links) { 'true' }
@@ -75,7 +75,7 @@ describe MrVideo::EpisodesController do
     } }
     let(:cassette) { double(:cassette) }
     let(:episode) { double(:episode, id: id) }
-    let(:destroy) { xhr(:post, :destroy, params) }
+    let(:destroy) { delete(:destroy, xhr: true, params: params) }
 
     subject { destroy }
 
@@ -86,7 +86,7 @@ describe MrVideo::EpisodesController do
       destroy
     end
 
-    it { should be_success }
+    it { should be_successful }
 
     it 'should destroy the episode' do
       expect(episode).to have_received(:destroy)

@@ -13,7 +13,14 @@ describe MrVideo::Cassette do
 
     context 'when cassette is in subdirectory' do
       let(:model) { model_class.find('test_subdirectory/dummy_cassette_2') }
-      it { should == 'test_subdirectory%2Fdummy_cassette_2' }
+      it { should == 'test_subdirectory/dummy_cassette_2' }
+
+      context 'when rails version < 4.2.0' do
+        before do
+          Rails.stub(:version).and_return('4.1.9')
+        end
+        it { should == 'test_subdirectory%2Fdummy_cassette_2' }
+      end
     end
   end
 
