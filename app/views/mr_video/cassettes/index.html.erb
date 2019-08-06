@@ -20,7 +20,7 @@
             <td><%= cassette.episodes.count %></td>
             <td><%= time_ago_in_words(cassette.updated_at) %> ago</td>
             <td>
-              <%= link_to(cassette_path(cassette), method: :delete, confirm: "Are you sure you want to delete the \"#{cassette.name}\" cassette?", 'data-severity' => 'danger', remote: true) do %>
+              <%= link_to(cassette_path(cassette), method: :delete, data: { confirm: "Are you sure you want to delete the \"#{cassette.name}\" cassette?", severity: 'danger' }, remote: true) do %>
                 <button class="btn btn-danger btn-xs">
                   <i class="glyphicon glyphicon-trash"></i> &nbsp;Delete
                 </button>

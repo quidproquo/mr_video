@@ -18,7 +18,7 @@ describe MrVideo::CassettesController do
   end
 
   describe '#show' do
-    let(:id) { 'bell_house' }
+    let(:id) { MrVideo::IdService.encode('bell_house') }
     let(:params) { { id: id } }
     let(:show) { get(:show, params: params) }
 
@@ -32,7 +32,7 @@ describe MrVideo::CassettesController do
   end
 
   describe '#destroy' do
-    let(:id) { 'bell_house' }
+    let(:id) { MrVideo::IdService.encode('bell_house') }
     let(:cassette) { double(:cassette, id: id) }
     let(:params) { { id: id } }
     let(:destroy) { delete(:destroy, xhr: true, params: params) }
@@ -50,6 +50,6 @@ describe MrVideo::CassettesController do
     it 'should destroy the cassette' do
       expect(cassette).to have_received(:destroy)
     end
-  end # #destroy
+  end
 
-end # MrVideo::CassettesController
+end

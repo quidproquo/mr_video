@@ -2,31 +2,24 @@ require 'rails_helper'
 
 describe MrVideo::Cassette do
   let(:model_class) { MrVideo::Cassette }
-  let(:model) { model_class.find('bell_house') }
+  let(:name) { 'bell_house' }
+  let(:id) { MrVideo::IdService.encode(name) }
+  let(:model) { model_class.find(id) }
 
   subject { model }
 
   describe '#id' do
-    let(:id) { model.id }
-    subject { id }
-    it { should == 'bell_house' }
+    subject { model.id }
+    it { should == id }
 
     context 'when cassette is in subdirectory' do
-      let(:model) { model_class.find('test_subdirectory/dummy_cassette_2') }
-      it { should == 'test_subdirectory/dummy_cassette_2' }
-
-      context 'when rails version < 4.2.0' do
-        before do
-          Rails.stub(:version).and_return('4.1.9')
-        end
-        it { should == 'test_subdirectory%2Fdummy_cassette_2' }
-      end
+      let(:name) { 'test_subdirectory/dummy_cassette_2' }
+      it { should == id }
     end
   end
 
   describe '#name' do
-    let(:name) { model.name }
-    subject { name }
+    subject { model.name }
     it { should == 'bell_house' }
   end
 
@@ -34,7 +27,7 @@ describe MrVideo::Cassette do
     let(:updated_at) { model.updated_at }
     subject { updated_at }
     it { should be_kind_of(DateTime) }
-  end # #updated_at
+  end
 
   describe '#episodes' do
     let(:episodes) { model.episodes }
@@ -53,7 +46,7 @@ describe MrVideo::Cassette do
       it { should be }
     end
 
-  end # #episodes
+  end
 
   describe '#destroy' do
     before do
@@ -64,13 +57,12 @@ describe MrVideo::Cassette do
     it 'should delete the file' do
       File.should have_received(:delete).with(model.send(:cassette_path))
     end
-
-  end # #destroy
+  end
 
   describe '#to_param' do
     let(:to_param) { model.to_param }
     subject { to_param }
-    it { should == 'bell_house' }
+    it { should == model.id }
   end
 
   describe '.all' do
@@ -81,9 +73,10 @@ describe MrVideo::Cassette do
 
   describe '.find' do
     context 'when name is from a subdirectory' do
-      let(:model) { model_class.find('test_subdirectory%2Fdummy_cassette_2') }
+      let(:name) { 'test_subdirectory/dummy_cassette_2' }
+      let(:model) { model_class.find(id) }
       it { -> { model }.should_not raise_error }
     end
   end
 
-end # MrVideo::Cassette
+end

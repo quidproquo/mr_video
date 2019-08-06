@@ -1,5 +1,4 @@
 module MrVideo
-
   class Episode
 
     attr_reader :cassette
@@ -10,7 +9,7 @@ module MrVideo
     end
 
     def id
-      url.hash
+      @id ||= IdService.encode(url)
     end
 
     def request_method
@@ -71,6 +70,5 @@ module MrVideo
       @http_interaction
     end
 
-  end # Episode class
-
-end # MrVideo module
+  end
+end

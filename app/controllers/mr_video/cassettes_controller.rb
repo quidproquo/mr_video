@@ -1,5 +1,4 @@
 module MrVideo
-
   class CassettesController < MrVideoController
 
     def index
@@ -15,6 +14,5 @@ module MrVideo
       @cassette.destroy    
     end
 
-  end # CassettesController class
-
-end # MrVideo module
+  end
+end

@@ -1,5 +1,5 @@
-require "mr_video/engine"
-require "mr_video/core_ext"
+require 'mr_video/engine'
+require 'mr_video/core_ext'
 
 module MrVideo
 

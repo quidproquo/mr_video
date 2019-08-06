@@ -2,7 +2,9 @@ require 'rails_helper'
 
 describe MrVideo::Episode do
   let(:episode_class) { MrVideo::Episode }
-  let(:cassette) { MrVideo::Cassette.find('dummy_cassette') }
+  let(:name) { 'dummy_cassette' }
+  let(:id) { MrVideo::IdService.encode(name) }
+  let(:cassette) { MrVideo::Cassette.find(id) }
   let(:episode) { cassette.episodes[0] }
 
   subject { episode }
@@ -10,57 +12,51 @@ describe MrVideo::Episode do
   describe 'properties' do
 
     describe '#id' do
-      let(:id) { episode.id }
-      subject { id }
-      it { should == episode.url.hash }
+      subject { episode.id }
+      it { should == MrVideo::IdService.encode(episode.url) }
     end
 
     describe '#url' do
-      let(:url) { episode.url }
-      subject { url }
+      subject { episode.url }
       it { should == 'http://www.thebellhouseny.com/calendar/' }
     end
 
     describe '#request_method' do
-      let(:request_method) { episode.request_method }
-      subject { request_method }
+      subject { episode.request_method }
       it { should == 'get' }
     end
 
     describe '#website_url' do
-      let(:website_url) { episode.website_url }
-      subject { website_url }
+      subject { episode.website_url }
       it { should == 'http://www.thebellhouseny.com' }
     end
 
     describe '#content' do
-      let(:content) { episode.content }
-      subject { content }
+      subject { episode.content }
       it { should match(/<html/) }
     end
 
     describe '#content_type' do
-      let(:content_type) { episode.content_type }
-      subject { content_type }
+      subject { episode.content_type }
       it { should == 'text/html; charset=UTF-8' }
     end
 
     describe '#recorded_at' do
-      let(:recorded_at) { episode.recorded_at }
-      subject { recorded_at }
+      subject { episode.recorded_at }
       it { should == Time.zone.parse('Wed, 04 Jun 2014 15:44:06').to_datetime }
     end
 
-  end # properties
+  end
 
   describe '#to_param' do
-    let(:to_param) { episode.to_param }
-    subject { to_param }
+    subject { episode.to_param  }
     it { should == episode.id.to_s }
   end
 
   describe '#destroy' do
-    let(:original_cassette) { MrVideo::Cassette.find('dummy_cassette') }
+    let(:name) { 'dummy_cassette' }
+    let(:id) { MrVideo::IdService.encode(name) }
+    let(:original_cassette) { MrVideo::Cassette.find(id) }
 
     before do
       original_cassette.load
@@ -80,4 +76,4 @@ describe MrVideo::Episode do
 
   end
 
-end # MrVideo::Episode
+end

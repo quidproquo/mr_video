@@ -1,5 +1,4 @@
 module MrVideo
-
   class Cassette
 
     def initialize(cassette_path)
@@ -7,11 +6,7 @@ module MrVideo
     end
 
     def id
-      if Rails.version < '4.2.0'
-        URI.escape(name, /\//)
-      else
-        name
-      end
+      @id ||= IdService.encode(name)
     end
 
     def name
@@ -73,8 +68,8 @@ module MrVideo
       }
     end
 
-    def self.find(name)
-      name = URI.decode(name)
+    def self.find(id)
+      name = IdService.decode(id)
       cassette_path = cassette_paths(name).first
       unless cassette_path
         raise StandardError.new("#{self.name} with name: '#{name}' not found!")
@@ -134,6 +129,5 @@ module MrVideo
       MrVideo.configuration.cassette_library_dir
     end
 
-  end # Cassette class
-
-end # MrVideo module
+  end
+end

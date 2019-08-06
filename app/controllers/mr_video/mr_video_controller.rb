@@ -1,8 +1,13 @@
 module MrVideo
 
   class MrVideoController < ActionController::Base
-    layout 'mr_video'
+    begin
+      skip_forgery_protection
+    rescue
+      # ignored
+    end
 
+    layout 'mr_video'
 
   end
 
