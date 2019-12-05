@@ -5,6 +5,10 @@ describe MrVideo::CassettesController do
 
   render_views
 
+  before do
+    allow(controller.main_app).to receive(:root_path).and_return '/'
+  end
+
   describe '#index' do
     let(:index) { get(:index) }
 
