@@ -1,29 +1,27 @@
 <% content_for(:title) { 'Cassettes' } %>
 <div class="row">
   <div class="col-md-12">
-    <h1>Cassettes (<%= @cassettes.count %>)</h1>
+    <h1>Cassettes <small class="text-muted"><%= @cassettes.count %></small></h1>
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Name</th>
-          <th>Episodes</th>
-          <th>Last Updated</th>
-          <th>Action</th>
+          <th scope="col" style="width: 4em" class="text-right">#</th>
+          <th scope="col" style="width: 80%">Name</th>
+          <th scope="col" style="width: 5em" class="text-right">Episodes</th>
+          <th scope="col" style="width: 20%">Last Updated</th>
+          <th scope="col" style="width: 9em" class="text-center">Action</th>
         </tr>
       </thead>
       <tbody>
         <% @cassettes.each_with_index do |cassette, index| %>
           <tr id="cassette_<%= cassette.id %>_row">
-            <td><%= index + 1 %></td>
-            <td><%= link_to(cassette.name, cassette_path(cassette)) %></td>
-            <td><%= cassette.episodes.count %></td>
-            <td><%= time_ago_in_words(cassette.updated_at) %> ago</td>
-            <td>
+            <th scope="row" class="text-right"><%= index + 1 %></th>
+            <td title="<%= cassette.name %>"><%= link_to(cassette.name, cassette_path(cassette)) %></td>
+            <td class="text-right"><%= cassette.episodes.count %></td>
+            <td class="small text-muted" title="<%= cassette.updated_at %>"><%= time_ago_in_words(cassette.updated_at) %> ago</td>
+            <td class="text-center">
               <%= link_to(cassette_path(cassette), method: :delete, data: { confirm: "Are you sure you want to delete the \"#{cassette.name}\" cassette?", severity: 'danger' }, remote: true) do %>
-                <button class="btn btn-danger btn-xs">
-                  <i class="glyphicon glyphicon-trash"></i> &nbsp;Delete
-                </button>
+                <button class="btn btn-outline-danger btn-sm">Delete</button>
               <% end %>
             </td>
           </tr>

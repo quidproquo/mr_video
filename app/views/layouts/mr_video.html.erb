@@ -9,46 +9,23 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" style="color: white;" href="<%= root_path %>">Mr. Video</a>
-        </div><!-- /.navbar-header -->
-        <div class="navbar-collapse collapse" id="navbar-main">
-          <ul class="nav navbar-nav">
-            <li>
-              <%= link_to('Cassettes', root_path) %>
-            </li>
-          </ul>
-        </div>
-      </div><!-- /.container-fluid -->
+    <nav class="navbar navbar-dark bg-dark fixed-top" role="navigation">
+      <a class="navbar-brand" href="<%= root_path %>">Mr. Video</a>
+      <div class="navbar-nav mr-auto">
+        <%= link_to('Cassettes', root_path, class: 'nav-item nav-link') %>
+      </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
       <%= yield %>
     </div>
-    <div class="navbar navbar-fixed-bottom navbar-inverse">
-      <div class="navbar-inner">
-        <div class="container">
-          <ul class="nav navbar-nav">
-            <li>
-              <p class="navbar-text" style="color: white;">Mr. Video v<%= MrVideo::VERSION %></p>
-            </li>
-            <li>
-              <%= link_to('Github', MrVideo::URL, target: '_blank') %>
-            </li>
-            <li>
-              <p class="navbar-text">Cassette Library Dir: <%= MrVideo.configuration.cassette_library_dir %></p>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div class="navbar navbar-dark bg-dark fixed-bottom">
+      <span class="navbar-text">Mr. Video v<%= MrVideo::VERSION %></span>
+      <ul class="nav navbar-nav">
+        <li>
+          <%= link_to('GitHub', MrVideo::URL, target: '_blank', class: 'nav-link') %>
+        </li>
+      </ul>
+      <span class="navbar-text">Cassette Library Dir: <%= MrVideo.configuration.cassette_library_dir %></span>
     </div>
     <%= javascript_include_tag 'mr_video/application' %>
   </body>
