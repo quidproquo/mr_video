@@ -23,9 +23,7 @@
             <td title="<%= episode.content_type %>"><code><%= episode.content_type %></code></td>
             <td class="small text-muted" title="<%= episode.recorded_at %>"><%= time_ago_in_words(episode.recorded_at) %> ago</td>
             <td class="text-center">
-              <%= link_to(cassette_episode_path(@cassette, episode), method: :delete, confirm: "Are you sure you want to delete the \"#{episode.url}\" episode?", 'data-severity' => 'danger', remote: true) do %>
-                <button class="btn btn-outline-danger btn-sm">Delete</button>
-              <% end %>
+              <%= link_to('Delete', cassette_episode_path(@cassette, episode), method: :delete, confirm: "Are you sure you want to delete the \"#{episode.url}\" episode?", 'data-severity' => 'danger', remote: true, class: 'btn btn-outline-danger btn-sm') %>
             </td>
           </tr>
         <% end %>
