@@ -1,5 +1,5 @@
 module MrVideo
-  VERSION = '1.1.2'
+  VERSION = '1.1.3'
   URL = 'https://github.com/quidproquo/mr_video'
   NAME = 'Mr. Video'
 end
