@@ -1,33 +1,29 @@
 <% content_for(:title) { "Cassettes | #{@cassette.name}" } %>
 <div class="row">
   <div class="col-md-12">
-    <h1><%= @cassette.name %></h1>
-    <h2>Episodes (<%= @cassette.episodes.count %>)</h2>
+    <h1 class="text-break"><%= @cassette.name %></h1>
+    <h2>Episodes <small class="text-muted"><%= @cassette.episodes.count %></small></h2>
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>#</th>
-          <th>Url</th>
-          <th>Method</th>
-          <th>Content Type</th>
-          <th>Recorded</th>
-          <th>Action</th>
+          <th scope="col" style="width: 4em" class="text-right">#</th>
+          <th scope="col" style="width: 60%">Url</th>
+          <th scope="col" style="width: 6em">Method</th>
+          <th scope="col" style="width: 20%">Content Type</th>
+          <th scope="col" style="width: 20%">Recorded</th>
+          <th scope="col" style="width: 9em" class="text-center">Action</th>
         </tr>
       </thead>
       <tbody>
         <% @cassette.episodes.each_with_index do |episode, index| %>
           <tr id="episode_<%= episode.id %>_row">
-            <td><%= index + 1 %></td>
-            <td><%= link_to(episode.url, cassette_episode_path(@cassette, episode, fix_relative_links: true), html_options = { target: '_blank' }) %></td>
-            <td><%= episode.request_method.upcase %></td>
-            <td><%= episode.content_type %></td>
-            <td title="<%= episode.recorded_at %>"><%= time_ago_in_words(episode.recorded_at) %> ago</td>
-            <td>
-              <%= link_to(cassette_episode_path(@cassette, episode), method: :delete, confirm: "Are you sure you want to delete the \"#{episode.url}\" episode?", 'data-severity' => 'danger', remote: true) do %>
-                <button class="btn btn-danger btn-xs">
-                  <i class="glyphicon glyphicon-trash"></i> &nbsp;Delete
-                </button>
-              <% end %>
+            <th scope="row" class="text-right"><%= index + 1 %></th>
+            <td title="<%= episode.url %>"><%= link_to(episode.url, cassette_episode_path(@cassette, episode, fix_relative_links: true), html_options = { target: '_blank' }) %></td>
+            <td><code><%= episode.request_method.upcase %></code></td>
+            <td title="<%= episode.content_type %>"><code><%= episode.content_type %></code></td>
+            <td class="small text-muted" title="<%= episode.recorded_at %>"><%= time_ago_in_words(episode.recorded_at) %> ago</td>
+            <td class="text-center">
+              <%= link_to('Delete', cassette_episode_path(@cassette, episode), method: :delete, confirm: "Are you sure you want to delete the \"#{episode.url}\" episode?", 'data-severity' => 'danger', remote: true, class: 'btn btn-outline-danger btn-sm') %>
             </td>
           </tr>
         <% end %>

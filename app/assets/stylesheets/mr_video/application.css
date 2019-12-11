@@ -16,3 +16,13 @@ body {
   padding-top: 70px;
   padding-bottom: 70px;
 }
+
+table {
+  table-layout: fixed;
+}
+
+td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
