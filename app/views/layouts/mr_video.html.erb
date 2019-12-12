@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= MrVideo::NAME %><%= ' | ' + yield(:title) if content_for?(:title) %></title>
     <%= stylesheet_link_tag 'mr_video/application', media: 'all' %>
+    <%= javascript_include_tag 'mr_video/application' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
@@ -28,6 +29,5 @@
       </ul>
       <span class="navbar-text">Cassette Library Dir: <%= MrVideo.configuration.cassette_library_dir %></span>
     </div>
-    <%= javascript_include_tag 'mr_video/application' %>
   </body>
 </html>

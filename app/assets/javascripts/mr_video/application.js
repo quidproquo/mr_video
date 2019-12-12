@@ -12,3 +12,10 @@
 //
 //= require_tree ./jquery
 //= require_tree ./bootstrap
+//= require_tree ./dataTables
+
+$(document).ready(function() {
+  $(".table").DataTable({
+    "autoWidth": false,
+  });
+});
