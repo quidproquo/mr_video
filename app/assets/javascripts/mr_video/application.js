@@ -16,8 +16,10 @@
 
 $(document).ready(function() {
   var t = $(".table").DataTable({
-    "autoWidth": false,
-    "order": [[1, 'asc']]
+    fixedHeader: {headerOffset: $('.navbar').outerHeight()},
+    lengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, 'All']],
+    order: [[1, 'asc']],
+    stateSave: true
   });
 
   t.on( 'order.dt search.dt', function() {
