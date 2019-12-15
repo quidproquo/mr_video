@@ -5,6 +5,7 @@
     <table class="table table-hover">
       <thead>
         <tr>
+          <th scope="col" style="width: 4em" data-searchable="false" data-orderable="false" class="text-right">#</th>
           <th scope="col" style="width: 80%">Name</th>
           <th scope="col" style="width: 5em" data-searchable="false" class="text-right">Episodes</th>
           <th scope="col" style="width: 20%" data-searchable="false">Last Updated</th>
@@ -14,6 +15,7 @@
       <tbody>
         <% @cassettes.each do |cassette| %>
           <tr id="cassette_<%= cassette.id %>_row">
+            <th scope="row" class="text-right"></th>
             <td title="<%= cassette.name %>"><%= link_to(cassette.name, cassette_path(cassette)) %></td>
             <td class="text-right"><%= cassette.episodes.count %></td>
             <td class="small text-muted" title="<%= cassette.updated_at %>" data-sort="<%= cassette.updated_at.to_i %>"><%= time_ago_in_words(cassette.updated_at) %> ago</td>
