@@ -6,18 +6,18 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col" style="width: 4em" class="text-right">#</th>
+          <th scope="col" style="width: 4em" data-searchable="false" data-orderable="false" class="text-right">#</th>
           <th scope="col" style="width: 60%">Url</th>
-          <th scope="col" style="width: 6em">Method</th>
-          <th scope="col" style="width: 20%">Content Type</th>
-          <th scope="col" style="width: 20%">Recorded</th>
-          <th scope="col" style="width: 9em" class="text-center">Action</th>
+          <th scope="col" style="width: 6em" data-searchable="false">Method</th>
+          <th scope="col" style="width: 20%" data-searchable="false">Content Type</th>
+          <th scope="col" style="width: 20%" data-searchable="false">Recorded</th>
+          <th scope="col" style="width: 9em" data-searchable="false" data-orderable="false" class="text-center">Action</th>
         </tr>
       </thead>
       <tbody>
-        <% @cassette.episodes.each_with_index do |episode, index| %>
+        <% @cassette.episodes.each do |episode| %>
           <tr id="episode_<%= episode.id %>_row">
-            <th scope="row" class="text-right"><%= index + 1 %></th>
+            <th scope="row" class="text-right"></th>
             <td title="<%= episode.url %>"><%= link_to(episode.url, cassette_episode_path(@cassette, episode, fix_relative_links: true), html_options = { target: '_blank' }) %></td>
             <td><code><%= episode.request_method.upcase %></code></td>
             <td title="<%= episode.content_type %>"><code><%= episode.content_type %></code></td>
