@@ -27,11 +27,11 @@ module MrVideo
         [
         /href=["']([^'" >]+)["']/,
         /src=["']([^'" >]+)["']/,
-        /@import url\(([^'" >]+)\)/     
+        /@import url\(([^'" >]+)\)/
         ].each do |pattern|
           content.gsub!(pattern) do |match|
             url = $1
-            match.gsub(url, URI.join(base_url, url).to_s)
+            match.gsub(url, URI.join(base_url, url).to_s) rescue URI::InvalidURIError
           end
         end
         content
