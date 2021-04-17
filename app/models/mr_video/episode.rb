@@ -29,7 +29,7 @@ module MrVideo
     end
 
     def content_type
-      headers['content-type'][0]
+      headers['content-type']&.first || ''
     end
 
     def recorded_at
