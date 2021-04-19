@@ -3,9 +3,9 @@ Mr. Video [![Build Status](https://travis-ci.org/quidproquo/mr_video.png?branch=
 
 Rails-based front-end for the popular [VCR gem](https://github.com/vcr/vcr). It allows you to
 browse cassettes and episodes. HTTP body content from episodes can be viewed in the browser,
-enabling easy debugging of JSON and HTML. Furthermore, cassettes and episodes can be deleted, 
-allowing for easy maintenance of recorded content. While Mr. Video is mainly meant to be used 
-in your development environment, it can be configured for production and is not directly 
+enabling easy debugging of JSON and HTML. Furthermore, cassettes and episodes can be deleted,
+allowing for easy maintenance of recorded content. While Mr. Video is mainly meant to be used
+in your development environment, it can be configured for production and is not directly
 dependent on the VCR gem.
 
 Compatibility
@@ -54,6 +54,59 @@ MyApp::Application.routes.draw do
   end
 
 end
+```
+
+Stand-alone
+------------
+
+For non Rails projects, you can create a single file that embeds everything, create in `mr_video.rb`:
+
+
+```ruby
+begin
+  require "bundler/inline"
+rescue LoadError => e
+  $stderr.puts "Bundler version 1.10 or later is required. Please update your Bundler"
+  raise e
+end
+
+gemfile(true) do
+  source "https://rubygems.org"
+
+  gem "rails", "~> 6.1.3"
+  gem "puma", "~> 5.2.2"
+  gem "mr_video"
+  gem "sprockets", "<4" # Recent Sprockets requires a manifest file
+end
+
+require 'action_controller/railtie'
+require 'sprockets/railtie'
+require 'mr_video'
+
+class App < Rails::Application
+  routes.append do
+    mount MrVideo::Engine => "/mr_video"
+
+    # ActionDispatch requires a defined root_path
+    root to: proc {|env| [301, {"Location" => "/mr_video"}, ["Redirect"]] }
+  end
+
+  config.consider_all_requests_local = true
+end
+
+MrVideo.configure do |config|
+  # Overwrite with cassettes directory in your project
+  config.cassette_library_dir = "spec/cassettes"
+end
+
+App.initialize!
+
+Rack::Server.new(app: App, Port: 3000).start
+```
+
+And run it like:
+```bash
+ruby mr_video.rb
 ```
 
 Copyright
